@@ -35,3 +35,5 @@ A video game marketplace similar to those found on PlayStation or XBOX consoles 
 
 ## Wireframe Image: 
 
+![wireframe image](/static/images/wireframe.png)
+
