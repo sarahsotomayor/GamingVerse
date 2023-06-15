@@ -12,12 +12,66 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GamingVerse</title>
+<title>GamingVerse | View Game</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
 </head>
 
 <body>
+<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+ 		<div class="container-fluid">
+   		<a class="navbar-brand" href="">GamingVerse</a>
+   		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     			<span class="navbar-toggler-icon"></span>
+   		</button>
+   		<div class="collapse navbar-collapse" id="navbarNav">
+     			<ul class="navbar-nav">
+       			<li class="nav-item">
+         				<a class="nav-link" href="/">Home</a>
+       			</li>
+       			<li class="nav-item">
+         				<a class="nav-link" href="/games">Games</a>
+       			</li>
+       			<li class="nav-item">
+       				<a class="nav-link" href="/logout">Logout</a>
+       			</li>
+     			</ul>
+   		</div>
+   		<h1>| Welcome <c:out value="${user.firstName}"></c:out>!</h1>
+ 		</div>
+	</nav>
+	
+<!-- SECTION ONE: GAME DETAILS -->
+	<section>
+		<div>
+			<h1>Title: <c:out value="${game.name}"></c:out></h1>
+			<div>
+				<p>ESRB Rating: <c:out value="${game.esbrRating}"></c:out></p>
+			</div>
+			<div class="d-flex">
+				<p>Console: <c:out value="${game.console}"></c:out></p>
+				<p>Genre: <c:out value="${game.genre}"></c:out></p>
+				<p>Size: <c:out value="${game.size}"></c:out></p>
+			</div>
+			<div>
+				<p>Description: <c:out value="${game.description}"></c:out></p>
+				<p>$</p>
+				<p>Add to Favorites</p>
+			</div>
+		</div>
+	</section>
+	
+<!-- SECTION TWO: GAME REVIEWS CARD & CAROUSEL COMPONENTS-->
+	<section>
+		<div>
+			<h1>Reviews</h1>
+			<div>
+				<a class="btn btn-primary" href="/add/review">Add Review</a>
+			</div>
+		</div>
+	</section>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

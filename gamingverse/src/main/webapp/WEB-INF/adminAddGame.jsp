@@ -12,27 +12,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GamingVerse | Add Review</title>
+<title>GamingVerse | ADMIN - Add Game</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>
-<!-- NAVBAR -->
+	<!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
  		<div class="container-fluid">
-   		<a class="navbar-brand" href="">GamingVerse</a>
+   		<a class="navbar-brand" href="">GamingVerse | ADMIN</a>
    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
      			<span class="navbar-toggler-icon"></span>
    		</button>
    		<div class="collapse navbar-collapse" id="navbarNav">
      			<ul class="navbar-nav">
-       			<li class="nav-item">
-         				<a class="nav-link" href="/">Home</a>
-       			</li>
-       			<li class="nav-item">
-         				<a class="nav-link" href="/games">Games</a>
-       			</li>
        			<li class="nav-item">
        				<a class="nav-link" href="/logout">Logout</a>
        			</li>
@@ -40,20 +34,42 @@
    		</div>
  		</div>
 	</nav>
-	
-<!-- FORM ADD REVIEW TO GAME -->
+
+<!-- FORM ADD VIDEO GAME TO DATABASE -->
 	<section>
-			<form:form action="/review/add/create" method="POST" modelAttribute="newReview">
-				<h2>Add Review:</h2>
+			<form:form action="/admin/addgame/create" method="POST" modelAttribute="newGame">
+				<h2>Add Game:</h2>
 				<div>
-					<form:input path="gameId" type="hidden" value="${game.id}"/>
-					<p>Game: <c:out value="${game.name}"></c:out></p>
+					<form:label path="name">Name:</form:label>
+					<form:input path="name"/>
+					<form:errors path="name"/>
 				</div>
 				<div>
-					<form:label path="reviewInput">Your Review:</form:label>
-					<form:textarea path="reviewInput"/>
-					<form:errors path="reviewInput"/>
+					<form:label path="description">Description:</form:label>
+					<form:textarea path="description"/>
+					<form:errors path="description"/>
 				</div>
+				<div>
+					<form:label path="esbrRating">ESBR Rating:</form:label>
+					<form:input path="esbrRating"/>
+					<form:errors path="esbrRating"/>				
+				</div>
+				<div>
+					<form:label path="console">Console Compatibility:</form:label>
+					<form:input path="console"/>
+					<form:errors path="console"/>
+				</div>
+				<div>
+					<form:label path="genre">Genre:</form:label>
+					<form:input path="genre"/>
+					<form:errors path="genre"/>				
+				</div>
+				<div>
+					<form:label path="size">Download Size:</form:label>
+					<form:input path="size"/>
+					<form:errors path="size"/>				
+				</div>
+
 				<button>Submit</button>
 			</form:form>
 	</section>

@@ -1,11 +1,5 @@
 package com.soloproject.gamingverse.models;
 
-import java.util.List;
-
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 
 //RETRIEVES LIST OF GAMES IN EACH GENRE
@@ -18,13 +12,6 @@ public class GenreResults {
 	public String slug;
 	
 	public int games_count;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="genre")
-	private Genre genre;
-	
-	@OneToMany(mappedBy="gameDetailsFromGenreResults", fetch = FetchType.EAGER)
-	private List<GameDetailsFromGenreResults> gameDetailsFromGenreResults;
 	
 	public GenreResults() {
 		
@@ -60,14 +47,6 @@ public class GenreResults {
 
 	public void setGames_count(int games_count) {
 		this.games_count = games_count;
-	}
-
-	public List<GameDetailsFromGenreResults> gameDetailsFromGenreResults() {
-		return gameDetailsFromGenreResults;
-	}
-
-	public void setGameDetails(List<GameDetailsFromGenreResults> gameDetailsFromGenreResults) {
-		this.gameDetailsFromGenreResults = gameDetailsFromGenreResults;
 	}
 	
 	

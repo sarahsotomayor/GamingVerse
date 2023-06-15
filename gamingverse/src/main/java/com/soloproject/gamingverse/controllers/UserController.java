@@ -41,12 +41,12 @@ public class UserController {
 		if(newUser == null) {
 			//must include login user attribute because there is a login user form on that page
 			model.addAttribute("loginUser", new LoginUser());
-			return "logingRegistration.jsp";
+			return "loginRegistration.jsp";
 		}
 		
 		//add user to DB and login using session
 		session.setAttribute("userId", newUser.getId());
-		return "redirect:/welcome";
+		return "redirect:/allgames";
 	}
 	
 	//LOGIN
@@ -59,7 +59,8 @@ public class UserController {
 			return "loginRegistration.jsp";
 		}
 		session.setAttribute("userId", user.getId());
-		return "redirect:/welcome";
+		
+		return "redirect:/allgames";
 	}
 	
 	
@@ -73,25 +74,6 @@ public class UserController {
 	}
 	
 	
-	//ADD GAME TO FAVORITES LIST
-	
-	
-	//REMOVE GAME FROM FAVORITES LIST
-	
-	
-	//ADD REVIEW
-	
-	
-	//VIEW REVIEW
-	
-	
-	//EDIT REVIEW
-	
-	
-	//DELETE REVIEW
-	
-	
-	
 	//LOGOUT
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
@@ -99,4 +81,7 @@ public class UserController {
 		// you can also do the following instead: session.invalidate();
 		return "redirect:/";
 	}
+	
+
+	
 }

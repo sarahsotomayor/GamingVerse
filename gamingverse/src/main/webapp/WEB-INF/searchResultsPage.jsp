@@ -75,7 +75,7 @@
 	<section>
 		<div>
 			<h1>TESTING API:</h1>
-			<h2>${genre.genreResults}</h2>
+			<h2>${genre.count}</h2>
 			
 		</div>
 	</section>

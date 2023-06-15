@@ -44,11 +44,11 @@ public class UserService {
 	
 	//GET ONE USER BY ID
 	public User findById(Long id) {
-		Optional<User> optUser = userRepository.findById(id);
-		if (optUser.isEmpty()) {
+		Optional<User> user = userRepository.findById(id);
+		if (user.isEmpty()) {
 			return null;
 		}
-		return optUser.get();
+		return user.get();
 	}
 	
 }

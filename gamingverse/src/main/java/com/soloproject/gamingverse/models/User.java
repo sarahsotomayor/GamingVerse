@@ -2,11 +2,15 @@ package com.soloproject.gamingverse.models;
 
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -44,6 +48,10 @@ public class User {
 	 @DateTimeFormat(pattern="yyyy-MM-dd")
 	 private Date createdAt;
 	 @DateTimeFormat(pattern="yyyy-MM-dd")
+	 
+	 //a user can have many reviews
+	 @OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+	 private List<Review> reviews;
 
 	 private Date updatedAt;
 
@@ -104,6 +112,14 @@ public class User {
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	
+	 public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 

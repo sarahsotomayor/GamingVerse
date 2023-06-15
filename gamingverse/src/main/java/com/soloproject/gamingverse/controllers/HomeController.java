@@ -22,28 +22,28 @@ public class HomeController {
 	}
 	
 	
-	//SEARCH PAGE
+	//SEARCH PAGE - API
 	@GetMapping("/search")
 	public String searchPage() {
 		return "/searchPage.jsp";
 	}
 	
-	//SEARCH PAGE FORM PROCESSING
+	//SEARCH PAGE FORM PROCESSING - API
 	
 	
 	
-	//SEARCH RESULTS PAGE
+	//SEARCH RESULTS PAGE - API
 	@GetMapping("/api/results")
 	public String searchResults(Model model) {
 		
-		model.addAttribute("genreResults", VideoGameService.getGenres());
-		System.out.println("Home Controller");
+		model.addAttribute("genre", VideoGameService.getGenres());
+		
+		//Testing
+		System.out.println("Home Controller API Results:");
 		System.out.println(VideoGameService.getGenres());
 		return "/searchResultsPage.jsp";
 	}
 	
-	
-	//VIEW GAME
-	//@GetMapping("/api/view")
+
 	
 }

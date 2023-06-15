@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GamingVerse | Add Review</title>
+<title>GamingVerse | All Games</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
@@ -31,32 +31,34 @@
          				<a class="nav-link" href="/">Home</a>
        			</li>
        			<li class="nav-item">
-         				<a class="nav-link" href="/games">Games</a>
-       			</li>
-       			<li class="nav-item">
        				<a class="nav-link" href="/logout">Logout</a>
        			</li>
      			</ul>
    		</div>
+   		<h1>| Welcome <c:out value="${user.firstName}"></c:out>!</h1>
  		</div>
 	</nav>
 	
-<!-- FORM ADD REVIEW TO GAME -->
+<!-- ALL GAMES -->
 	<section>
-			<form:form action="/review/add/create" method="POST" modelAttribute="newReview">
-				<h2>Add Review:</h2>
-				<div>
-					<form:input path="gameId" type="hidden" value="${game.id}"/>
-					<p>Game: <c:out value="${game.name}"></c:out></p>
-				</div>
-				<div>
-					<form:label path="reviewInput">Your Review:</form:label>
-					<form:textarea path="reviewInput"/>
-					<form:errors path="reviewInput"/>
-				</div>
-				<button>Submit</button>
-			</form:form>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>All Games</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="game" items="${allGames}">
+					<tr>
+						<td><a href="viewgame/${game.id}"><c:out value="${game.name}"></c:out></a></td>
+					</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</section>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
