@@ -35,5 +35,15 @@ public class ReviewService {
 		return reviewRepository.findAll();
 	}
 	
+	//UPDATE REVIEW
+	public Review updateReview(Review r) {
+		return reviewRepository.save(r);
+	}
+	
+	//DELETE REVIEW
+	public void delete(Long id) {
+		reviewRepository.deleteById(id);
+	}
+	
 	
 }

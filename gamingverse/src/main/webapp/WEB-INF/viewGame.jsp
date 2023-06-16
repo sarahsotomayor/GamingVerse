@@ -82,9 +82,15 @@
 					<c:forEach var="review" items="${game.reviews}">
 						<p><c:out value="${review.reviewInput}"></c:out></p>
 						<!-- c:if to display the edit ONLY for the user who created the review -->
-						<c:if test="${user.id == review.user.id}">
-							<a class="btn btn-warning mt-3" href="/view/review/${review.id}">Edit Your Review</a>
-						</c:if>
+						<div class="row">
+							<c:if test="${user.id == review.user.id}">
+								<a class="col btn btn-warning mt-3" href="/view/review/${game.id}/${review.id}">Edit Review</a>
+								<form:form class="col" action="/review/${review.id}" method="post">
+									<input type="hidden" name="_method" value="delete">
+									<button class="btn btn-danger mt-3">Delete Review</button>
+								</form:form>
+							</c:if>
+						</div>
 						<!-- can add review poster by this example: review.postedby, in another c:out-->
 					</c:forEach>
 				</div>

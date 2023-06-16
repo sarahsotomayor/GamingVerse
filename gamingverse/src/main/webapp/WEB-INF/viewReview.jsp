@@ -41,11 +41,27 @@
  		</div>
 	</nav>
 
-<!-- VIEW REVIEW -->
+<!-- VIEW & EDIT REVIEW -->
 	<section>
 		<div class="container mt-5 text-white">
-			<h2>Your Review:</h2>
-
+			<h2 class="mb-5">Edit Review</h2>
+			<form:form action="/view/review/${game.id}/${editReview.id}/edit" method="POST" modelAttribute="editReview">
+				<input type="hidden" name="_method" value="PUT"/>
+				<!-- USER & GAME HIDDEN INPUTS -->
+					<form:hidden value="${game.id}" path="game"/>
+					<form:hidden value="${user.id}" path="user"/>
+					<form:hidden value="${review.id}" path="id"/>
+				<div>
+					<p>Game: <c:out value="${game.name}"></c:out></p>
+				</div>
+				<div>
+					<form:label path="reviewInput" class="form-label">Your Review:</form:label>
+					<form:textarea path="reviewInput" class="form-control" value="${review.reviewInput}"/>
+					<form:errors path="reviewInput"/>
+				</div>
+				<button class="btn btn-primary mt-5">Submit</button>
+			</form:form>
+			<a class="btn btn-primary mt-3" href="/viewgame/${game.id}">Nevermind</a>
 		</div>
 	</section>
 

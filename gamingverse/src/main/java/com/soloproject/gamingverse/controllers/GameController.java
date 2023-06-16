@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.soloproject.gamingverse.models.Game;
 import com.soloproject.gamingverse.models.Review;
@@ -105,7 +107,7 @@ public class GameController {
 	
 	//PROCESS AND ADD REVIEW
 	@PostMapping("/add/review/{gameId}/create")
-	public String createGame(@Valid @ModelAttribute("newReview") Review newReview, @PathVariable("gameId") Long id, Model model, BindingResult result, HttpSession session)
+	public String createGame(@Valid @ModelAttribute("newReview") Review newReview, BindingResult result, @PathVariable("gameId") Long id, Model model, HttpSession session)
 	{
 		if(result.hasErrors()) {
 			return "addReview.jsp";
@@ -128,24 +130,46 @@ public class GameController {
 	
 	
 	//VIEW & EDIT REVIEW
-	@GetMapping("/view/review/{reviewId}")
-	public String viewReview(@PathVariable("reviewId") Long id, Model model, HttpSession session) {
+	@GetMapping("/view/review/{gameId}/{reviewId}")
+	public String viewReview(@PathVariable("gameId") Long id, @PathVariable("reviewId") Long reviewid, Model model, HttpSession session) {
 		//Only accessible if logged on
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/login";
 		}
 		
-		Review review = reviewService.findReview(id);
-		model.addAttribute("review", review);
-
-		return "/viewReview.jsp";
+		Game game = gameService.findGame(id);
+		model.addAttribute("game", game);
+		
+		Review review = reviewService.findReview(reviewid);
+		model.addAttribute("editReview", review);
+		
+		reviewService.updateReview(review);
+		return "viewReview.jsp";
 	}
 	
 	
 	//PROCESS EDIT FORM
+	@PutMapping(value="/view/review/{gameId}/{reviewId}/edit")
+	public String update(@Valid @ModelAttribute("editReview") Review review, @PathVariable("gameId") Long id, @PathVariable("reviewId") Long reviewid, BindingResult result) {
+		if(result.hasErrors()) {
+			return "viewReview.jsp";
+		}
+		else {
+			
+			reviewService.updateReview(review);
+			
+			return String.format("redirect:/viewgame/" + id);
+		}
+		
+	}
 	
 	
 	//DELETE REVIEW
+	@DeleteMapping("/review/{id}")
+	public String deleteReview(@PathVariable("id") Long id) {
+		reviewService.delete(id);
+		return "redirect:/allgames";
+	}
 	
 	
 	//ADD GAME TO FAVORITES LIST
