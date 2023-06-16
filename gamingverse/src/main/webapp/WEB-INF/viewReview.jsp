@@ -12,12 +12,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GamingVerse</title>
+<title>GamingVerse | Edit Review</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<!-- LOCAL CSS -->
+<link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 
-<body>
+<body class="vh-100">
+<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+ 		<div class="container-fluid">
+   		<a class="navbar-brand" href="">GamingVerse</a>
+   		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     			<span class="navbar-toggler-icon"></span>
+   		</button>
+   		<div class="collapse navbar-collapse" id="navbarNav">
+     			<ul class="navbar-nav">
+       			<li class="nav-item">
+         				<a class="nav-link" href="/">Home</a>
+       			</li>
+       			<li class="nav-item">
+       				<a class="nav-link" href="/logout">Logout</a>
+       			</li>
+     			</ul>
+   		</div>
+   		<h1>| Welcome <c:out value="${user.firstName}"></c:out>!</h1>
+ 		</div>
+	</nav>
+
+<!-- VIEW REVIEW -->
+	<section>
+		<div class="container mt-5 text-white">
+			<h2>Your Review:</h2>
+
+		</div>
+	</section>
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

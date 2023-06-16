@@ -79,7 +79,7 @@ public class UserController {
 	public String logout(HttpSession session) {
 		session.setAttribute("userId", null);
 		// you can also do the following instead: session.invalidate();
-		return "redirect:/";
+		return "redirect:/login";
 	}
 	
 

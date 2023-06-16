@@ -15,9 +15,11 @@
 <title>GamingVerse | Add Review</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<!-- LOCAL CSS -->
+<link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 
-<body>
+<body class="vh-100">
 <!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
  		<div class="container-fluid">
@@ -38,24 +40,26 @@
        			</li>
      			</ul>
    		</div>
+   		<h1>| Welcome <c:out value="${user.firstName}"></c:out>!</h1>
  		</div>
 	</nav>
 	
 <!-- FORM ADD REVIEW TO GAME -->
 	<section>
-			<form:form action="/review/add/create" method="POST" modelAttribute="newReview">
+		<div class="container mt-5 text-white">
+			<form:form action="/add/review/${gameId}/create" method="POST" modelAttribute="newReview">
 				<h2>Add Review:</h2>
 				<div>
-					<form:input path="gameId" type="hidden" value="${game.id}"/>
 					<p>Game: <c:out value="${game.name}"></c:out></p>
 				</div>
 				<div>
-					<form:label path="reviewInput">Your Review:</form:label>
-					<form:textarea path="reviewInput"/>
+					<form:label path="reviewInput" class="form-label">Your Review:</form:label>
+					<form:textarea path="reviewInput" class="form-control"/>
 					<form:errors path="reviewInput"/>
 				</div>
-				<button>Submit</button>
+				<button class="btn btn-primary mt-5">Submit</button>
 			</form:form>
+		</div>
 	</section>
 
 

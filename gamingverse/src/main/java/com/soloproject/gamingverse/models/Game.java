@@ -47,7 +47,7 @@ public class Game {
 	 private Date updatedAt;
 	 
 	 //a game has many reviews
-	 @OneToMany(mappedBy="game", fetch = FetchType.EAGER)
+	 @OneToMany(mappedBy="game", fetch = FetchType.LAZY)
 	 private List<Review> reviews;
 
 	public Game() {

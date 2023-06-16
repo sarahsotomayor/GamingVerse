@@ -15,10 +15,11 @@
 <title>GamingVerse | View Game</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+<!-- LOCAL CSS -->
+<link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 
-<body>
+<body class="vh-100">
 <!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
  		<div class="container-fluid">
@@ -44,31 +45,49 @@
 	</nav>
 	
 <!-- SECTION ONE: GAME DETAILS -->
-	<section>
+	<section class="container text-white  ms-5 mt-5">
 		<div>
 			<h1>Title: <c:out value="${game.name}"></c:out></h1>
 			<div>
-				<p>ESRB Rating: <c:out value="${game.esbrRating}"></c:out></p>
+				<p class="me-3 border border-primary-subtle rounded p-2 w-25">ESRB Rating: <c:out value="${game.esbrRating}"></c:out></p>
 			</div>
 			<div class="d-flex">
-				<p>Console: <c:out value="${game.console}"></c:out></p>
-				<p>Genre: <c:out value="${game.genre}"></c:out></p>
-				<p>Size: <c:out value="${game.size}"></c:out></p>
+				<p class="me-3 border border-primary-subtle rounded p-2">Console: <c:out value="${game.console}"></c:out></p>
+				<p class="me-3 border border-primary-subtle rounded p-2">Genre: <c:out value="${game.genre}"></c:out></p>
+				<p class="me-3 border border-primary-subtle rounded p-2">Size: <c:out value="${game.size}"></c:out></p>
 			</div>
 			<div>
 				<p>Description: <c:out value="${game.description}"></c:out></p>
-				<p>$</p>
-				<p>Add to Favorites</p>
+				<p>$0.00</p>
+				<button class="btn btn-success">Buy</button>
+				<button class="btn btn-primary">Add to Favorites</button>
 			</div>
 		</div>
 	</section>
 	
-<!-- SECTION TWO: GAME REVIEWS CARD & CAROUSEL COMPONENTS-->
-	<section>
-		<div>
-			<h1>Reviews</h1>
-			<div>
-				<a class="btn btn-primary" href="/add/review">Add Review</a>
+<!-- SECTION TWO: GAME REVIEWS -->
+	<section class="container text-white ms-5 mt-5">
+		<div class="row">
+			<div class="col-3 border border-primary-subtle rounded p-2">
+				<h1>Reviews</h1>
+				<div>
+					<a class="btn btn-primary mt-5 mb-5" href="/add/review/${gameId}">Add Review</a>
+				</div>
+			</div>
+		
+		<!-- CAROUSEL COMPONENT WITH REVIEW CARDS-->
+			<div class="col-9">
+				<div>
+					<!-- for each review IN game.reviews, grab review.reviewInput -->
+					<c:forEach var="review" items="${game.reviews}">
+						<p><c:out value="${review.reviewInput}"></c:out></p>
+						<!-- c:if to display the edit ONLY for the user who created the review -->
+						<c:if test="${user.id == review.user.id}">
+							<a class="btn btn-warning mt-3" href="/view/review/${review.id}">Edit Your Review</a>
+						</c:if>
+						<!-- can add review poster by this example: review.postedby, in another c:out-->
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</section>

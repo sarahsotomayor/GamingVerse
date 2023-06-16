@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 
-<body>
+<body class="vh-100">
 <!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
  		<div class="container-fluid">

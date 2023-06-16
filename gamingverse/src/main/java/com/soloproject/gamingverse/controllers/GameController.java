@@ -46,7 +46,7 @@ public class GameController {
 		}
 		else {
 			gameService.createGame(newGame);
-			return "redirect:/viewgame";
+			return "redirect:/allgames";
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class GameController {
 	}
 	
 	
-	//VIEW ONE GAME
+	//VIEW ONE GAME & ITS REVIEWS
 	@GetMapping("/viewgame/{gameId}")
 	public String viewGame(@PathVariable("gameId") Long id, Model model, HttpSession session) {
 		//Only accessible if logged on
@@ -78,6 +78,8 @@ public class GameController {
 		
 		Game game = gameService.findGame(id);
 		model.addAttribute("game", game);
+		
+		
 		model.addAttribute("user", userService.findById((Long) session.getAttribute("userId")));
 
 		
@@ -95,21 +97,15 @@ public class GameController {
 		
 		Game game = gameService.findGame(id);
 		model.addAttribute("game", game);
+		model.addAttribute("user", userService.findById((Long) session.getAttribute("userId")));
+
 		return "addReview.jsp";
 	}
 	
-	/*
-	 * @GetMapping("/viewgame/{gameId}/add/review") public String
-	 * addReview(@PathVariable("gameId") Long id, Model
-	 * model, @ModelAttribute("newReview") Review newReview) { Game game =
-	 * gameService.findGame(id); model.addAttribute("game", game); return
-	 * "addReview.jsp"; }
-	 */
-	
 	
 	//PROCESS AND ADD REVIEW
-	@PostMapping("/add/review/create")
-	public String createGame(@Valid @ModelAttribute("newReview") Review newReview, BindingResult result, HttpSession session)
+	@PostMapping("/add/review/{gameId}/create")
+	public String createGame(@Valid @ModelAttribute("newReview") Review newReview, @PathVariable("gameId") Long id, Model model, BindingResult result, HttpSession session)
 	{
 		if(result.hasErrors()) {
 			return "addReview.jsp";
@@ -117,16 +113,36 @@ public class GameController {
 		else {
 			User user = userService.findById((Long) session.getAttribute("userId"));
 			newReview.setUser(user);
+			
+			Game game = gameService.findGame(id);
+			
+			model.addAttribute("game", game);
+			
+			newReview.setGame(game);
+			
 			reviewService.createReview(newReview);
-			return "redirect:viewGame.jsp";
+			
+			return String.format("redirect:/viewgame/" + id);
 		}
 	}
 	
 	
-	//VIEW REVIEW
+	//VIEW & EDIT REVIEW
+	@GetMapping("/view/review/{reviewId}")
+	public String viewReview(@PathVariable("reviewId") Long id, Model model, HttpSession session) {
+		//Only accessible if logged on
+		if (session.getAttribute("userId") == null) {
+			return "redirect:/login";
+		}
+		
+		Review review = reviewService.findReview(id);
+		model.addAttribute("review", review);
+
+		return "/viewReview.jsp";
+	}
 	
 	
-	//EDIT REVIEW
+	//PROCESS EDIT FORM
 	
 	
 	//DELETE REVIEW

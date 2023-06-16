@@ -65,8 +65,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        
+        </dependency>      
         
         <!-- DEPENDENCY FOR USING BCRYPT  -->
         <dependency>
@@ -74,6 +73,7 @@
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
+        
         
         <!-- DEPENDECY FOR WEBFLUX API LIBRARY-->
         <dependency>

@@ -48,12 +48,15 @@ public class User {
 	 @DateTimeFormat(pattern="yyyy-MM-dd")
 	 private Date createdAt;
 	 @DateTimeFormat(pattern="yyyy-MM-dd")
+	 private Date updatedAt;
 	 
 	 //a user can have many reviews
-	 @OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+	 @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
 	 private List<Review> reviews;
+	 
 
-	 private Date updatedAt;
+
+	 
 
 	 public User() {
 	     

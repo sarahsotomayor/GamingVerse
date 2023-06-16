@@ -15,9 +15,11 @@
 <title>GamingVerse | All Games</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<!-- LOCAL CSS -->
+<link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 
-<body>
+<body class="vh-100">
 <!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
  		<div class="container-fluid">
@@ -41,21 +43,24 @@
 	
 <!-- ALL GAMES -->
 	<section>
-		<div>
-			<table>
-				<thead>
-					<tr>
-						<th>All Games</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="game" items="${allGames}">
-					<tr>
-						<td><a href="viewgame/${game.id}"><c:out value="${game.name}"></c:out></a></td>
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+		<div class="container mt-5 text-white">
+			<h1>All Games</h1>
+			<div class="table-responsive card">
+				<table class="table table-bordered table-hover text-white">
+					<thead>
+						<tr>
+							<th>Game Title</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="game" items="${allGames}">
+						<tr>
+							<td><a href="viewgame/${game.id}"><c:out value="${game.name}"></c:out></a></td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</section>
 
