@@ -65,34 +65,44 @@
 		</div>
 	</section>
 	
-<!-- SECTION TWO: GAME REVIEWS -->
+<!-- SECTION TWO: GAME REVIEWS (REVIEW HEADER)-->
 	<section class="container text-white ms-5 mt-5">
 		<div class="row">
-			<div class="col-3 border border-primary-subtle rounded p-2">
+			<div class="col-3 card bg-transparent text-white border border-primary-subtle">
 				<h1>Reviews</h1>
 				<div>
-					<a class="btn btn-primary mt-5 mb-5" href="/add/review/${gameId}">Add Review</a>
+					<a class="btn btn-primary btn-sm mt-5 mb-5" href="/add/review/${gameId}">Add Review</a>
 				</div>
 			</div>
-		
-		<!-- CAROUSEL COMPONENT WITH REVIEW CARDS-->
+	
+<!-- SECTION THREE: GAME REVIEWS, CAROUSEL COMPONENT WITH REVIEW CARDS-->
+	
 			<div class="col-9">
-				<div>
-					<!-- for each review IN game.reviews, grab review.reviewInput -->
-					<c:forEach var="review" items="${game.reviews}">
-						<p><c:out value="${review.reviewInput}"></c:out></p>
-						<!-- c:if to display the edit ONLY for the user who created the review -->
-						<div class="row">
-							<c:if test="${user.id == review.user.id}">
-								<a class="col btn btn-warning mt-3" href="/view/review/${game.id}/${review.id}">Edit Review</a>
-								<form:form class="col" action="/review/${review.id}" method="post">
-									<input type="hidden" name="_method" value="delete">
-									<button class="btn btn-danger mt-3">Delete Review</button>
-								</form:form>
-							</c:if>
-						</div>
-						<!-- can add review poster by this example: review.postedby, in another c:out-->
-					</c:forEach>
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+				<!-- for each review IN game.reviews, grab review.reviewInput -->
+				<c:forEach var="review" items="${game.reviews}">
+						<div class="col">
+   				 			<div class="card border-0">
+  								<div class="card-img-overlay text-white">
+  						
+									<p><c:out value="${review.reviewInput}"></c:out></p>
+									<!-- c:if to display the edit ONLY for the user who created the review -->
+									<div>
+										<c:if test="${user.id == review.user.id}">
+											<a class="btn btn-warning btn-sm mt-3" href="/view/review/${game.id}/${review.id}">Edit Review</a>
+											<form:form action="/review/${review.id}" method="post">
+												<input type="hidden" name="_method" value="delete">
+												<button class="btn btn-danger btn-sm mt-3">Delete Review</button>
+											</form:form>
+										</c:if>
+									</div>
+  							
+  								</div>
+    						</div>
+  						</div>
+			
+					<!-- can add review poster by this example: review.postedby, in another c:out-->
+				</c:forEach>
 				</div>
 			</div>
 		</div>

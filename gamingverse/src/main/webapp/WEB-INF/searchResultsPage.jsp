@@ -15,9 +15,11 @@
 <title>GamingVerse | Search Results</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<!-- LOCAL CSS -->
+<link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 
-<body>
+<body class="vh-100">
 <!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
  		<div class="container-fluid">
@@ -54,7 +56,7 @@
 	
 <!-- SEARCH RESULTS SECTION ONE: VIDEO GAME INFORMATION -->
 	<section>
-		<div>
+		<div class="text-white">
 			<h1>Title</h1>
 			<div class="d-flex">
 				<p>Rating</p>
@@ -73,7 +75,7 @@
 
 <!-- SEARCH RESULTS SECTION TWO: VIDEO GAME RESULTS CARD OVERLAYS-->
 	<section>
-		<div>
+		<div class="text-white">
 			<h1>TESTING API:</h1>
 			<h2>${genre.count}</h2>
 			

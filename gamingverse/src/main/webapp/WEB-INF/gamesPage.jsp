@@ -15,9 +15,11 @@
 <title>GamingVerse | Games</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<!-- LOCAL CSS -->
+<link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 
-<body>
+<body class="vh-100">
 <!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
  		<div class="container-fluid">
@@ -52,7 +54,7 @@
 <!-- SECTION ONE: SPOTLIGHT -->
 	
 	<section>
-		<div class="container text-center">
+		<div class="container text-center text-white">
 			<div class="row">
 				<div class="col-9">80% OFF!</div>
 				<div class="col-3">

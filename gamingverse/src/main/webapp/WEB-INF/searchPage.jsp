@@ -15,9 +15,11 @@
 <title>GamingVerse | Search</title>
 <!-- BOOTSTRAP -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<!-- LOCAL CSS -->
+<link rel="stylesheet" type="text/css" href="/css/styling.css">
 </head>
 
-<body>
+<body class="vh-100">
 <!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
  		<div class="container-fluid">
@@ -53,16 +55,20 @@
 	</nav>
 
 <!-- SEARCH FORM -->
-	<form class="d-flex justify-content-center" role="search">
-		<div class="align-items-center">
-			<div>
-        		<input class="form-control me-2 mb-3" type="search" placeholder="Search" aria-label="Search">
-			</div>
-			<div>
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</div>
-		</div>
-    </form>
+	<section>
+		<div class="container mt-5">
+			<form class="d-flex justify-content-center" role="search">
+				<div class="align-items-center">
+					<div>
+        				<input class="form-control me-2 mb-3 text-center" type="search" placeholder="Search" aria-label="Search">
+					</div>
+					<div class="d-flex justify-content-center">
+						<button class="btn btn-outline-success" type="submit">Submit</button>
+					</div>
+				</div>
+    		</form>
+    	</div>
+    </section>
 
 
 
