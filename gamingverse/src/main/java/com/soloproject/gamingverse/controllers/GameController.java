@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.soloproject.gamingverse.models.Game;
 import com.soloproject.gamingverse.models.Review;
@@ -48,15 +49,16 @@ public class GameController {
 		}
 		else {
 			gameService.createGame(newGame);
-			return "redirect:/allgames";
+			return "redirect:/admin/addgame";
 		}
 	}
 	
 	//VIEW ALL GAMES
 	@GetMapping("/allgames")
-	public String games(Model model, HttpSession session) {
+	public String games(Model model, HttpSession session, RedirectAttributes redirect) {
 		//Only accessible if logged on
 		if (session.getAttribute("userId") == null) {
+			redirect.addFlashAttribute("error", "You must be logged in to view that page.");
 			return "redirect:/login";
 		}
 	//RETURN ALL GAMES
@@ -72,9 +74,10 @@ public class GameController {
 	
 	//VIEW ONE GAME & ITS REVIEWS
 	@GetMapping("/viewgame/{gameId}")
-	public String viewGame(@PathVariable("gameId") Long id, Model model, HttpSession session) {
+	public String viewGame(@PathVariable("gameId") Long id, Model model, HttpSession session, RedirectAttributes redirect) {
 		//Only accessible if logged on
 		if (session.getAttribute("userId") == null) {
+			redirect.addFlashAttribute("error", "You must be logged in to view that page.");
 			return "redirect:/login";
 		}
 		
@@ -91,9 +94,10 @@ public class GameController {
 	
 	//ADD REVIEW FORM
 	@GetMapping("/add/review/{gameId}")
-	public String addReview(@PathVariable("gameId") Long id, Model model, @ModelAttribute("newReview") Review newReview, HttpSession session) {
+	public String addReview(@PathVariable("gameId") Long id, Model model, @ModelAttribute("newReview") Review newReview, HttpSession session, RedirectAttributes redirect) {
 		//Only accessible if logged on
 		if (session.getAttribute("userId") == null) {
+			redirect.addFlashAttribute("error", "You must be logged in to view that page.");
 			return "redirect:/login";
 		}
 		
@@ -131,11 +135,14 @@ public class GameController {
 	
 	//VIEW & EDIT REVIEW
 	@GetMapping("/view/review/{gameId}/{reviewId}")
-	public String viewReview(@PathVariable("gameId") Long id, @PathVariable("reviewId") Long reviewid, Model model, HttpSession session) {
+	public String viewReview(@PathVariable("gameId") Long id, @PathVariable("reviewId") Long reviewid, Model model, HttpSession session, RedirectAttributes redirect) {
 		//Only accessible if logged on
 		if (session.getAttribute("userId") == null) {
+			redirect.addFlashAttribute("error", "You must be logged in to view that page.");
 			return "redirect:/login";
 		}
+		else {
+		model.addAttribute("user", userService.findById((Long) session.getAttribute("userId")));	
 		
 		Game game = gameService.findGame(id);
 		model.addAttribute("game", game);
@@ -145,6 +152,7 @@ public class GameController {
 		
 		reviewService.updateReview(review);
 		return "viewReview.jsp";
+		}
 	}
 	
 	

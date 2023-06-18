@@ -54,7 +54,7 @@
 <!-- SECTION ONE: SPOTLIGHT -->
 	
 	<section>
-		<div class="container text-center text-white">
+		<div class="container text-center text-white mt-5 mb-5">
 			<div class="row">
 				<div class="col-9">80% OFF!</div>
 				<div class="col-3">
@@ -67,7 +67,7 @@
 	
 <!-- SECTION TWO: SEARCH BY GENRE CARD OVERLAYS-->
 	
-	<section>
+	<section class="container">
 		<div class="row row-cols-1 row-cols-md-6 g-4">
   			<div class="col">
    				 <div class="card">
@@ -167,6 +167,13 @@
   			</div>
 		</div>
 	</section>
+	
+    <!--Footer-->
+    <footer class="footer fixed-bottom text-white mt-3">
+        <p class="lead text-center fs-6 mt-5 pt-5">
+            Copyright &copy; 2023 Sarah Sotomayor
+        </p>
+    </footer>
 
 
 

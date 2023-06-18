@@ -28,7 +28,8 @@
 	</nav>
 
 <!-- FORM TO REGISTER OR LOGIN -->
-	<main class="container-fluid mt-5 text-white">
+	<main class="container-md container-fluid mt-5 text-white">
+		<h3 class="text-danger"><c:out value="${error}"/></h3>
 		<div class="row">
 			<!-- REGISTER -->
 			<div class="col">
@@ -82,6 +83,13 @@
 			</div>
 		</div>
 	</main>
+	
+    <!--Footer-->
+    <footer class="footer fixed-bottom text-white mt-3">
+        <p class="lead text-center fs-6 mt-5 pt-5">
+            Copyright &copy; 2023 Sarah Sotomayor
+        </p>
+    </footer>
 
 
 

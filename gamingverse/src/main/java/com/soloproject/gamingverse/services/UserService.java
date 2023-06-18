@@ -2,6 +2,7 @@ package com.soloproject.gamingverse.services;
 
 import java.util.Optional;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -20,12 +21,16 @@ public class UserService {
 	public User createUser(User u, BindingResult result) {
 		//check if passwords match in registration
 		if (!u.getConfirmPassword().equals(u.getPassword())) {
-			result.rejectValue("confirmPassword", null, "Passwords do not match");
+			result.rejectValue("confirmPassword", null, "Passwords do not match!");
 		}
 		//checks for other errors
 		if (result.hasErrors()) {
 			return null;
 		}
+		//BCrypt
+		String hashedPW = BCrypt.hashpw(u.getPassword(), BCrypt.gensalt());
+		u.setPassword(hashedPW);
+		
 		return userRepository.save(u);
 	}
 	
@@ -36,8 +41,9 @@ public class UserService {
 			return null;
 		}
 		User user = optUser.get();
-		if (!user.getPassword().equals(l.getPassword())) {
-			return null;
+		
+		if(!BCrypt.checkpw(user.getPassword(), user.getPassword())) {
+		    result.rejectValue("password", "Matches", "Invalid Password!");
 		}
 		return user;
 	}

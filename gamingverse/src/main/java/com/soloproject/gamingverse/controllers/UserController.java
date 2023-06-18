@@ -2,6 +2,8 @@ package com.soloproject.gamingverse.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,13 +34,10 @@ public class UserController {
 	//REGISTER 
 	@PostMapping("/register")
 	public String register(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
-		//run register method to then check for errors
-		//you can call it anything as long as it is not the same as above
-			//User user  not same as User newUser
+		//run register method which will check if passwords match and for other errors
 		User newUser = userService.createUser(user, result);
-		
 		//if new user is null(has errors), re-renders logReg template
-		if(newUser == null) {
+		if(result.hasErrors()) {
 			//must include login user attribute because there is a login user form on that page
 			model.addAttribute("loginUser", new LoginUser());
 			return "loginRegistration.jsp";
@@ -54,10 +53,12 @@ public class UserController {
 	public String login(@Valid @ModelAttribute("loginUser") LoginUser loginUser, BindingResult result, Model model, HttpSession session) {
 		//run login method
 		User user = userService.login(loginUser, result);
+		
 		if (user == null) {
 			model.addAttribute("user", new User());
 			return "loginRegistration.jsp";
 		}
+		
 		session.setAttribute("userId", user.getId());
 		
 		return "redirect:/allgames";

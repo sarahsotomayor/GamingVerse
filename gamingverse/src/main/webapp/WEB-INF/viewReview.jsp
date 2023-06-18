@@ -44,7 +44,7 @@
 <!-- VIEW & EDIT REVIEW -->
 	<section>
 		<div class="container mt-5 text-white">
-			<h2 class="mb-5">Edit Review</h2>
+			<h2 class="mb-5 fw-bold">Edit Review</h2>
 			<form:form action="/view/review/${game.id}/${editReview.id}/edit" method="POST" modelAttribute="editReview">
 				<input type="hidden" name="_method" value="PUT"/>
 				<!-- USER & GAME HIDDEN INPUTS -->
@@ -65,6 +65,13 @@
 		</div>
 	</section>
 
+
+    <!--Footer-->
+    <footer class="footer fixed-bottom text-white mt-3">
+        <p class="lead text-center fs-6 mt-5 pt-5">
+            Copyright &copy; 2023 Sarah Sotomayor
+        </p>
+    </footer>
 
 
 

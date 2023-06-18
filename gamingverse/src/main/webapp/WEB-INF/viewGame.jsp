@@ -47,7 +47,7 @@
 <!-- SECTION ONE: GAME DETAILS -->
 	<section class="container text-white  ms-5 mt-5">
 		<div>
-			<h1>Title: <c:out value="${game.name}"></c:out></h1>
+			<h1 class="fw-bold">Title: <c:out value="${game.name}"></c:out></h1>
 			<div>
 				<p class="me-3 border border-primary-subtle rounded p-2 w-25">ESRB Rating: <c:out value="${game.esbrRating}"></c:out></p>
 			</div>
@@ -69,20 +69,20 @@
 	<section class="container text-white ms-5 mt-5">
 		<div class="row">
 			<div class="col-3 card bg-transparent text-white border border-primary-subtle">
-				<h1>Reviews</h1>
+				<h1 class="card-title">Reviews</h1>
 				<div>
-					<a class="btn btn-primary btn-sm mt-5 mb-5" href="/add/review/${gameId}">Add Review</a>
+					<a class="btn btn-primary stretched-link mt-5 mb-5" href="/add/review/${gameId}">Add Review</a>
 				</div>
 			</div>
 	
-<!-- SECTION THREE: GAME REVIEWS, CAROUSEL COMPONENT WITH REVIEW CARDS-->
+			<!-- GAME REVIEWS, CAROUSEL COMPONENT WITH REVIEW CARDS-->
 	
 			<div class="col-9">
 				<div class="row row-cols-1 row-cols-md-3 g-4">
 				<!-- for each review IN game.reviews, grab review.reviewInput -->
 				<c:forEach var="review" items="${game.reviews}">
 						<div class="col">
-   				 			<div class="card border-0">
+   				 			<div class="card border-info">
   								<div class="card-img-overlay text-white">
   						
 									<p><c:out value="${review.reviewInput}"></c:out></p>
@@ -96,17 +96,23 @@
 											</form:form>
 										</c:if>
 									</div>
-  							
+									<!-- REVIEW POSTED BY -->
+  									<p class="d-flex justify-content-end mt-5">Posted by: <c:out value="${review.user.firstName}"></c:out></p>
   								</div>
     						</div>
   						</div>
-			
-					<!-- can add review poster by this example: review.postedby, in another c:out-->
 				</c:forEach>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+    <!--Footer-->
+    <footer class="footer fixed-bottom text-white mt-3">
+        <p class="lead text-center fs-6 mt-5 pt-5">
+            Copyright &copy; 2023 Sarah Sotomayor
+        </p>
+    </footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

@@ -63,6 +63,14 @@
 			</div>
 		</div>
 	</section>
+	
+	
+    <!--Footer-->
+    <footer class="footer fixed-bottom text-white mt-3">
+        <p class="lead text-center fs-6 mt-5 pt-5">
+            Copyright &copy; 2023 Sarah Sotomayor
+        </p>
+    </footer>
 
 
 

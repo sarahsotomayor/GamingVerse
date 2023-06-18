@@ -48,7 +48,7 @@
 	<section>
 		<div class="container mt-5 text-white">
 			<form:form action="/add/review/${gameId}/create" method="POST" modelAttribute="newReview">
-				<h2>Add Review:</h2>
+				<h2 class="mb-5 fw-bold">Add Review:</h2>
 				<div>
 					<p>Game: <c:out value="${game.name}"></c:out></p>
 				</div>
@@ -59,8 +59,16 @@
 				</div>
 				<button class="btn btn-primary mt-5">Submit</button>
 			</form:form>
+			<a class="btn btn-primary mt-3" href="/viewgame/${game.id}">Nevermind</a>
 		</div>
 	</section>
+	
+    <!--Footer-->
+    <footer class="footer fixed-bottom text-white mt-3">
+        <p class="lead text-center fs-6 mt-5 pt-5">
+            Copyright &copy; 2023 Sarah Sotomayor
+        </p>
+    </footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

@@ -50,13 +50,10 @@
    		</div>
  		</div>
 	</nav>
-<!-- HEADER -->
-	<header>
-		<h1 class="text-white">Welcome <c:out value="${user.firstName}"/>!</h1>
-	</header>
+
 <!-- SECTION ONE: FEATURED BUTTON MENUS (SPOTLIGHT, SEARCH, SIGN UP/LOGIN, DEALS, SUBSCRIPTIONS)-->
 	<section>
-		<div class="container text-center text-white">
+		<div class="container text-center text-white mb-5 mt-5">
 			<div class="row">
 				<div class="col-6">Early Access Spotlight</div>
 				<div class="col-2"><a href="/search">Search</a></div>
@@ -70,8 +67,8 @@
 	</section>
 	
 <!-- SECTION TWO: CARD OVERLAYS FOR SEARCH OPTIONS -->
-	<section>
-		<div class="row row-cols-1 row-cols-md-5 g-4">
+	<section class="container">
+		<div class="row row-cols-1 row-cols-md-5 g-4 mt-5">
   			<div class="col">
    				 <div class="card">
       				<img src="..." class="card-img" alt="...">
@@ -114,6 +111,13 @@
   			</div>
 		</div>
 	</section>
+	
+    <!--Footer-->
+    <footer class="footer fixed-bottom text-white mt-3">
+        <p class="lead text-center fs-6 mt-5 pt-5">
+            Copyright &copy; 2023 Sarah Sotomayor
+        </p>
+    </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
