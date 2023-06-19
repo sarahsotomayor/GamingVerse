@@ -25,16 +25,16 @@ A video game marketplace similar to those found on PlayStation or XBOX consoles 
 **Nice To Have**
 * [x] Bootstrap framework for all styling, adding plain CSS only as needed
 * [x] Responsive application (using specific Bootstrap components for this)
-* [] Favorites list: users are able to add and remove games to a list for easy navigation to purchase later
-* [] 3rd party API for video games
-* [] Search capability
-* [] Users can click on a genre and a list of video games will populate
-* [] Advanced/Professional Bootstrap usage (carousels, scroll, dropdowns, videos, etc.)
-* [] Membership levels for subscriptions (early access deals, free play on paid games, etc.)
-* [] Many-to-Many relationship (reviews have likes if considered helpful)
-* [] Functioning purchase capabilities
-* [] Pagination and Sorting
-* [] Deployment 
+[] Favorites list: users are able to add and remove games to a list for easy navigation to purchase later
+[] 3rd party API for video games
+[] Search capability
+[] Users can click on a genre and a list of video games will populate
+[] Advanced/Professional Bootstrap usage (carousels, scroll, dropdowns, videos, etc.)
+[] Membership levels for subscriptions (early access deals, free play on paid games, etc.)
+[] Many-to-Many relationship (reviews have likes if considered helpful)
+[] Functioning purchase capabilities
+[] Pagination and Sorting
+[] Deployment 
 
 ## Wireframe Image: 
 
