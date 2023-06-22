@@ -48,7 +48,24 @@ A video game marketplace similar to those found on PlayStation or XBOX consoles 
 * Pagination and Sorting
 * Deployment 
 
-## Wireframe Image: 
+## Version Notes:
 
-![wireframe image](/static/images/wireframe.png)
+v 1.0.0 | 7 June 2023
+• Repo created
+• Wireframe Image & Proposal
+
+v 1.0.1 | 14 June 2023
+• Spring project set up with Spring MVC
+
+v 1.0.2 | 15 June 2023
+• Started working on CRUD files
+
+v 1.0.3 | 16 June 2023
+• Completed CRUD functionality 
+
+v 1.0.4 | 18 June 2023
+• Fixed styling issues
+• Added data to MySQL database
+
+
 
